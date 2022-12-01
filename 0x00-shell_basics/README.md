@@ -33,4 +33,7 @@ a script that deletes my_first_directory that is in /tmp/ directory
 10.10-back
 a script that changes the working directory to the previous directory
 
-11.
+11.11-lists
+a script that lists all file including hidden files in the current working directory, parent directory of current working directory and /boot directory
+
+12.
