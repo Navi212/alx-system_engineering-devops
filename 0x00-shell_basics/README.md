@@ -48,4 +48,5 @@ a script that moves all files begining with an upper case letter to /tmp/u. If u
 15. 101-clean_emacs
 a script that deletes all files in the current working directory that ends with the Tilde character ~
 
-16. 
+16.102-tree
+a script that creates welcome/, welcome/to/ and welcome/to/school in the current directory
