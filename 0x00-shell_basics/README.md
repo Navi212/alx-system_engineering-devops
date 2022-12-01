@@ -39,4 +39,7 @@ a script that lists all file including hidden files in the current working direc
 12.12-file_type
 a script that print the type of file named iamafile in the /tmp directory
 
-13. 
+13.13-symbolic_link
+a symbolic link to /bin/ls named __ls__
+
+14. 
