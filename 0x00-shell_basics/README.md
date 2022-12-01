@@ -50,3 +50,6 @@ a script that deletes all files in the current working directory that ends with 
 
 16.102-tree
 a script that creates welcome/, welcome/to/ and welcome/to/school in the current directory
+
+17.103-commas
+a script that list directory contents seperated by commas
