@@ -44,3 +44,8 @@ a symbolic link to /bin/ls named __ls__
 
 14.100-lets_move
 a script that moves all files begining with an upper case letter to /tmp/u. If u doesnt exist, it will be created
+
+15. 101-clean_emacs
+a script that deletes all files in the current working directory that ends with the Tilde character ~
+
+16. 
