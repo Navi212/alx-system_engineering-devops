@@ -9,4 +9,7 @@ displays the content list of current working directory
 3. 3-listfiles
 displays directory content in long format
 
-4. 
+4. 4-listmorefiles
+lists directory contents including hidden files starting with dots
+
+5. 
