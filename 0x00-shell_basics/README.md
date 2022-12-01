@@ -36,4 +36,7 @@ a script that changes the working directory to the previous directory
 11.11-lists
 a script that lists all file including hidden files in the current working directory, parent directory of current working directory and /boot directory
 
-12.
+12.12-file_type
+a script that print the type of file named iamafile in the /tmp directory
+
+13. 
