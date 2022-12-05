@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -dr | wc -l
+find -depth -type d | wc -l
