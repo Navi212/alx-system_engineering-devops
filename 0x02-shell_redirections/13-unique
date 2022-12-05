@@ -1,0 +1,2 @@
+#!/bin/bash
+cat unsorted | sort | uniq -u
