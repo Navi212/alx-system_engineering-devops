@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "$((16#ff))\n"
+echo "$((16#ff))"
