@@ -45,3 +45,6 @@ A script that prints all possible combinations of two letters, except oo.
 A script that prints a number with two decimal places, followed by a new line.
 
 The number will be stored in the environment variable NUM.
+
+16.102-odd
+The eggs of the brood need to be an odd number.
