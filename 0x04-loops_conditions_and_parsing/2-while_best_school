@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#A bash script demostrating a while loop construct
+i=0
+while [ $i -lt 10 ]
+do
+	echo "Best School"
+	(( i++ ))
+done

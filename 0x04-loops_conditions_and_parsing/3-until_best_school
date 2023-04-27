@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#A bash script demostrating a until loop construct
+i=1
+until [ $i -gt 10 ]
+do
+	echo "Best School"
+	(( i++ ))
+done
