@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
-#Creates a bash script that uses a nested loop
-hour=0
-while [ $hour -le 12 ]
+#A bash script that displays the time for 12 hours
+#+ and 59 minutes.
+Hour=0
+while [ $Hour -lt 12 ]
 do
-    echo "Hour: $hour"
-    mins=1
-    while [ $mins -lt 60 ]
-    do
-	echo "$mins"
-	((mins++))
-    done
-    ((hour++))
+	echo "Hour: $Hour"
+	min=1
+	while [ $min -lt 60 ]
+	do
+		echo $min
+		min=$((min+1))
+	done
+	Hour=$((Hour+1))
 done
