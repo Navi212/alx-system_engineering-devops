@@ -15,5 +15,5 @@ touch /usr/share/nginx/html/404.html
 echo "Ceci n'est pas une page" > /usr/share/nginx/html/404.html
 sed -i "s/.htm;/$tag/" /etc/nginx/sites-available/default
 sed -i "s/#error_page 404/error_page 404/" /etc/nginx/sites-available/default
-sed -i "s/.htnl;/$ADD_HEADER" /etc/nginx/sites-available/default
+sed -i "s/.htm;/$ADD_HEADER" /etc/nginx/sites-available/default
 service nginx restart
