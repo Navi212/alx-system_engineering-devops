@@ -19,5 +19,5 @@ echo "server {
 }" > /etc/nginx/sites-available/default
 
 tag="\\\n\tlocation \/redirect_me {\n\t\treturn 301 http:\/\/www.google.com;\n\t}"
-sed -i "6i $tag" /etc/nginx/sites-available/default
+sed -i "7i $tag" /etc/nginx/sites-available/default
 service nginx restart
