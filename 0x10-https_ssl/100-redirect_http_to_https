@@ -42,7 +42,7 @@ frontend web_front
 frontend www-https
         bind *:443 ssl cert /etc/haproxy/certs/www.codershub.tech.pem
         http-request set-header X-Forwarded-Proto https
-	http-request redirect scheme https code 301 if !{ssl_fc}
+	http-request redirect scheme https code 301 if !{ ssl_fc }
         default_backend web_backend
 
 backend web_backend
