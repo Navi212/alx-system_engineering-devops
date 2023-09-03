@@ -11,10 +11,8 @@
 #    above requirements (this script will be run on the server itself)
 #    Not allowed to use systemctl for restarting nginx
 
-apt update -y
-apt install nginx -y
+apt-get update && apt-get -y install nginx;
 mkdir /etc/nginx/html
-touch /etc/nginx/html/index.html
 echo "Hello World!" > /etc/nginx/html/index.html
 
 echo "server {
