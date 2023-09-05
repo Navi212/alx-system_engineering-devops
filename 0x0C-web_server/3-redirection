@@ -3,21 +3,18 @@
 #to another page.
 #Requirements:
 #
-#    The redirection must be a “301 Moved Permanently”
+#    The redirection must be a �~@~\301 Moved Permanently�~@~]
 
-apt update -y
-apt install nginx -y
-mkdir /etc/nginx/html
-touch /etc/nginx/html/index.html
-echo "Hello World!" > /etc/nginx/html/index.html
-
+apt-get update && apt-get -y install nginx;
+mkdir -p /var/www/html;
+echo "Hello World!" > /var/www/html/index.html;
 echo "server {
         listen  80;
         listen  [::]:80 default_server;
-        root    /etc/nginx/html;
+        root    /var/www/html;
         index   index.html index.htm;
-}" > /etc/nginx/sites-available/default
+}" > /etc/nginx/sites-available/default;
 
 tag="\\\n\tlocation \/redirect_me {\n\t\treturn 301 http:\/\/www.google.com;\n\t}"
-sed -i "7i $tag" /etc/nginx/sites-available/default
+sed -i "6i $tag" /etc/nginx/sites-available/default
 service nginx restart

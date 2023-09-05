@@ -11,14 +11,14 @@
 #    above requirements (this script will be run on the server itself)
 #    Not allowed to use systemctl for restarting nginx
 
-apt-get update && apt-get -y install nginx;
-mkdir /etc/nginx/html;
-echo "Hello World!" > /etc/nginx/html/index.html;
+apt-get update && apt-get -y install nginx
+mkdir -p /var/www/html
+echo "Hello World!" > /var/www/html/index.html
 echo "server {
         listen  80;
         listen  [::]:80 default_server;
-        root    /etc/nginx/html;
+        root    /var/www/html;
         index   index.html index.htm;
-}" > /etc/nginx/sites-available/default;
+}" > /etc/nginx/sites-available/default
 
-service nginx restart;
+service nginx restart
