@@ -25,6 +25,7 @@ backend web-backend
         server 208571-web-02 34.203.29.98:80 check
 " >> /etc/haproxy/haproxy.cfg
 
+#Enables HAproxy to be managed via an init script
 echo "ENABLED=1" >> /etc/default/haproxy
 
 service haproxy restart
