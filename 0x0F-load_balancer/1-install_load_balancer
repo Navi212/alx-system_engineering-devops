@@ -1,4 +1,4 @@
-!/usr/bin/env bash
+#!/usr/bin/env bash
 #Install and configure HAproxy on your lb-01 server.
 #Ubuntu Focal(20.04LTS)
 #version: 2.0 stable LTS
@@ -11,14 +11,20 @@
 #    Make sure that your servers are configured with the right
 #    hostnames: [STUDENT_ID]-web-01 and [STUDENT_ID]-web-02
 
-apt-get install --no-install-recommends software-properties-common -y
-add-apt-repository ppa:vbernat/haproxy-2.0 -y
-apt-get -y install haproxy=2.0.\*
+apt-get update && apt-get -y install haproxy
+cp /etc/haproxy/haproxy.cfg /etc/haproxy/original_haproxy.cfg
+
+printf "\n
+frontend web-frontend
+        bind *:80
+        default_backend web-backend
+
+backend web-backend
+        balance roundrobin
+        server 208571-web-01 34.229.68.65:80 check
+        server 208571-web-02 34.203.29.98:80 check
+" >> /etc/haproxy/haproxy.cfg
 
 echo "ENABLED=1" >> /etc/default/haproxy
-cp /etc/haproxy/haproxy.cfg /etc/haproxy/my_original_copy_haproxy.cfg
 
-var="\\\nfrontend web_front\n\tbind *:80\n\tmode http\n\tdefault_backend web_backend\n\nbackend web_backend\n\tbalance roundrobin\n\tserver 208571-web-01 34.229.68.65 check\n\tserver 208571-web-02 34.203.29.98 check\n"
-sed -i "$ a$var" /etc/haproxy/haproxy.cfg
-
-service haproxy start
+service haproxy restart
