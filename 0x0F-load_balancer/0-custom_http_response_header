@@ -1,30 +1,26 @@
 #!/usr/bin/env bash
-#Configure Nginx so that its HTTP response contains a custom header (on web-01 and web-02)
+#Configure your Nginx server to have a custom 404 page that contains
+#the string Ceci n'est pas une page
+#Requirements follows other previous tasks
 #
-#   The name of the custom HTTP header must be X-Served-By
-#   Thee value of the custom HTTP header must be the hostname of the server Nginx is running on
-#   A 0-custom_http_response_header so that it configures a brand new Ubuntu machine to the 
-#   requirements asked in this task
+#Requirements:
+#
 
-apt update -y
-apt install nginx -y
-mkdir /etc/nginx/html
-touch /etc/nginx/html/index.html
-echo "Hello World!" > /etc/nginx/html/index.html
-
+apt-get update && apt-get -y install nginx;
+mkdir -p /var/www/html;
+echo "Hello World!" > /var/www/html/index.html;
 echo "server {
         listen  80;
         listen  [::]:80 default_server;
         add_header X-Served-By $HOSTNAME;
-        root    /etc/nginx/html;
+        root    /var/www/html;
         index   index.html index.htm;
-}" > /etc/nginx/sites-available/default
+}" > /etc/nginx/sites-available/default;
 
 tag="\\\n\tlocation \/redirect_me {\n\t\treturn 301 http:\/\/www.google.com;\n\t}"
 sed -i "7i $tag" /etc/nginx/sites-available/default
-touch /usr/share/nginx/html/404.html
-echo "Ceci n'est pas une page" > /usr/share/nginx/html/404.html
-var="\\\n\terror_page 404 /404.html;\n\tlocation /404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}"
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+var="\\\n\terror_page 404 /404.html;\n\tlocation /404.html {\n\t\troot /var/www/html;\n\t\tinternal;\n\t}"
 sed -i "11i $var" /etc/nginx/sites-available/default
 
 service nginx restart
