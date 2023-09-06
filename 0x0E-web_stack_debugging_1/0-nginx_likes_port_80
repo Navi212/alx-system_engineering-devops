@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
-#A script that configures an Nginx server to listen on port 80.
+#A script that finds out what keep Ubuntu container’s Nginx
+#installation from listening on port 80
+#Solution:
+#I checked if nginx was listening on port 80 with "netstat -lptn"
+#but nginx was not listening.
+#Next i checked if nginx was running with "service nginx status"
+#but nginx was not running
+#Fix:
+#I started nginx with "service nginx start" and nginx started
+#I checked if nginx was listening with "netstat -lptn" and YES
+#Finally i curl "0:80" and nginx page was served correctly
 
-rm /etc/nginx/sites-enabled/default
-ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-
-service nginx restart
+service nginx start
