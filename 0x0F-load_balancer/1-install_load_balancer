@@ -11,7 +11,8 @@
 #    Make sure that your servers are configured with the right
 #    hostnames: [STUDENT_ID]-web-01 and [STUDENT_ID]-web-02
 
-apt-get update && apt-get -y install haproxy
+apt-get update
+apt-get -y install haproxy
 cp /etc/haproxy/haproxy.cfg /etc/haproxy/original_haproxy.cfg
 
 printf "\n
