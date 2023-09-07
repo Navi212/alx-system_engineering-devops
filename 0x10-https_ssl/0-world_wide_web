@@ -6,8 +6,7 @@ dns_query ()
 	if [ "$#" -eq 2 ]
 	then
 		dig "$2.$1" +noall +answer | awk -v arg="$2" '{sub(/\.$/, "", $1); print "The subdomain " arg " is a " $4 " record and points to " $5}'
-	fi
-	if [ "$#" -eq 1 ]
+	elif [ "$#" -eq 1 ]
 	then
 		size="${#sub_domains[@]}"
 		for ((i=0; i<"${size}"; i++))
