@@ -16,24 +16,20 @@
 #When passing domain and subdomain parameters, display information for the specified
 #subdomain
 
+sub_domains=("www" "lb-01" "web-01" "web-02")
 dns_query ()
 {
-	sub_domains=("www" "lb-01" "web-01" "web-02")
-
-	if [ "$#" -eq 2 ]
-	then
-		dm="$2.$1"
-		dig "${dm}" +noall +answer | awk -v arg="$2" '{sub(/\.$/, "", $1); print "The subdomain " arg " is a " $4 " record and points to " $5}'
-	fi
-
-	if [ "$#" -eq 1 ]
-	then
-		size="${#sub_domains[@]}"
-		for ((i=0; i<"${size}"; i++))
-		do
-			dm="${sub_domains[i]}.$1"
-			dig "${dm}" +noall +answer | awk -v arg="${sub_domains[i]}" '{sub(/\.$/, "", $1); print "The subdomain " arg " is a " $4 " record and points to " $5}'
-		done
-	fi
+	line="$(dig "$2.$1" | grep -A1 "ANSWER SECTION:" | tr '\t' '\n' | tr ' ' '\n' | tail -2 | tr '\n' ' ')"
+	echo "$2 $line" | awk -v arg="$2" '{print "The subdomain " arg " is a " $2 " record and points to " $3}'
 }
-dns_query "${@}"
+if [ "$#" -eq 2 ]
+then
+	dns_query "$1" "$2"
+elif [ "$#" -eq 1 ]
+then
+	for ((i=0; i<"${#sub_domains[@]}"; i++))
+	do
+		dns_query "$1" "${sub_domains[i]}"
+	done
+fi
+
