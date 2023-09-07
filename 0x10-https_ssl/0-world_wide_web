@@ -1,31 +1,12 @@
 #!/usr/bin/env bash
 #A bash script that performs a dns query.
-#Requirements:
-#A script must accept 2 arguments:
-#	domain:
-#		type: string
-#		what: domain name to audit
-#		mandatory: yes
-#	subdomain:
-#		type: string
-#		what: specific subdomain to audit
-#		mandatory: no
-#Output: The subdomain [SUB_DOMAIN] is a [RECORD_TYPE] record and points to [DESTINATION]
-#When only the parameter domain is provided, display information for its subdomains
-#www, lb-01, web-01 and web-02 - in this specific order
-#When passing domain and subdomain parameters, display information for the specified
-#subdomain
-
 dns_query ()
 {
 	sub_domains=("www" "lb-01" "web-01" "web-02")
-
 	if [ "$#" -eq 2 ]
 	then
-		dm="$2.$1"
-		dig "${dm}" +noall +answer | awk -v arg="$2" '{sub(/\.$/, "", $1); print "The subdomain " arg " is a " $4 " record and points to " $5}'
+		dig "$2.$1" +noall +answer | awk -v arg="$2" '{sub(/\.$/, "", $1); print "The subdomain " arg " is a " $4 " record and points to " $5}'
 	fi
-
 	if [ "$#" -eq 1 ]
 	then
 		size="${#sub_domains[@]}"
