@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#A bash script that installs ufw firewall
+#and setups it up with a few rules on web-01.
+#Requirements:
+#Configure ufw so that it blocks all incoming traffic,
+#except the following TCP ports:
+#22 (SSH)
+#443 (HTTPS SSL)
+#80 (HTTP)
+
+sudo apt-get -y install ufw
+sudo ufw allow 22
+sudo ufw allow 443
+sudo ufw allow 80
+sudo ufw enable
