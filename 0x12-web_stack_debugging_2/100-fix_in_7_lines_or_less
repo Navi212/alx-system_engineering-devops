@@ -1,8 +1,17 @@
 #!/usr/bin/env bash
 #A bash that fixes a container so that Nginx
-sed -i 's/#user www-data/user nginx' /etc/nginx/nginx.conf
-sed -i 's/80/8080/g' /etc/nginx/sites-available/default
-chmod 644 /etc/nginx/nginx.conf
-pkill apache2
-sudo -u nginx service nginx restart
+#is running as the nginx user.
+#Requirements:
+#nginx must be running as nginx user
+#nginx must be listening on all active IPs on port 8080
 
+#Sets only read permission for group and others
+chmod 644 /etc/nginx/nginx.conf
+#Adds nginx user in place of the www-data user
+sed -i 's/#user www-data;/user nginx;' /etc/nginx/nginx.conf
+#Configure nginx to listen on port 8080 as non root
+sed -i 's/80/8080/g' /etc/nginx/sites-available/default
+#Kill apache2 in case of any interference
+pkill apache2
+#Restarts nginx as nginx user
+sudo -u nginx service nginx start
