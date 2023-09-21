@@ -1,0 +1,11 @@
+#Run this command in web-01 and web-02 servers
+CREATE USER 'holberton_user'@'localhost' IDENTIFIED BY 'projectcorrection280hbtn';
+
+#Run ths command on the master and slave server to grant permision for replication
+GRANT REPLICATION CLIENT ON *.* TO 'holberton_user'@'localhost';
+
+#Flush the priviledges
+FLUSH PRIVILEGES;
+
+#Use this command to check it on the bash command line. U can run it on both servers
+mysql -uholberton_user -p -e "SHOW GRANTS FOR 'holberton_user'@'localhost'"

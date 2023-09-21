@@ -1,0 +1,25 @@
+#In web-01 create a replica user so that it can
+#have the permission to replicate master(primary)
+#to slave
+CREATE USER 'replica_user'@'%' IDENTIFIED BY 'projectcorrection280hbtn;
+
+#replica_user must have the appropriate permissions
+#to replicate your primary MySQL server.
+GRANT REPLICATION SLAVE ON *.* TO 'replica_user'@'%';
+
+#holberton_user will need SELECT privileges on the
+#mysql.user table in order to check that replica_user
+#was created with the correct permissions.
+GRANT SELECT ON mysql.user TO 'holberton_user'@'localhost';
+
+#Finally Flush the priviledges to take effect
+FLUSH PRIVILEGES;
+
+#NOTE:
+#The users we have been creating were all from the
+#sudo mysql because it has all the priviledges to
+#to do anything.
+
+#Lastly we can confirm the output so see the permission
+#Run this from bash command line
+mysql -uholberton_user -p -e 'SELECT user, Repl_slave_priv FROM mysql.user'

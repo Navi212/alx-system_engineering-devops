@@ -1,0 +1,22 @@
+#Create database tyrell_corp on web-01
+#Note:Create this while logged in as mysql root
+#Like in:
+#sudo mysql
+CREATE DATABASE IF NOT EXISTS tyrell_corp;
+
+#Create table inside the database
+USE DATABASE tyrell_corp;
+CREATE TABLE IF NOT EXISTS nexus6 (
+	id int AUTO_INCREMENT PRIMARY KEY,
+	Name varchar(225)
+	);
+
+#Give select priviledge to TO 'holberton_user'@'localhost'
+#on tyrell_corp.nexus6
+GRANT SELECT ON tyrell_corp.nexus6 TO 'holberton_user'@'localhost';
+
+#Then flush everything to get activated
+FLUSH PRIVILEDGES;
+
+#Verify this from bash command line:
+mysql -uholberton_user -p -e "SHOW GRANTS FOR 'holberton_user'@'localhost'"
