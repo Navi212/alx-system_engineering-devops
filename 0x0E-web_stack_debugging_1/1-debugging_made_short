@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #A script that configures ubuntu container Nginx installation listening on port 80
-ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+sudo rm -f /etc/nginx/sites-enabled/default
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
 service nginx start
 kill "$(pgrep nginx | head -n 1)"
 

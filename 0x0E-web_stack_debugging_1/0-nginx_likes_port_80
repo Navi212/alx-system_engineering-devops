@@ -11,4 +11,4 @@
 #I checked if nginx was listening with "netstat -lptn" and YES
 #Finally i curl "0:80" and nginx page was served correctly
 
-service nginx start
+sudo service nginx start
