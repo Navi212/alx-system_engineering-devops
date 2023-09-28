@@ -18,7 +18,7 @@ if __name__ == "__main__":
     with open(f"{user_id}.csv", "w", newline="") as csvfile:
         obj = csv.writer(csvfile, delimiter=",", quoting=csv.QUOTE_ALL)
         for i in range(0, len(todo)):
-            if (todo[i]["userId"] == int(user_id)):
+            if (todo[i].get("userId") == int(user_id)):
                 status = todo[i].get("completed")
                 title = todo[i].get("title")
                 obj.writerow([user_id, username, status, title])
