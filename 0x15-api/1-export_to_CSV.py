@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """
-The `1-export_to_CSV` that fetches data
-from API an exports to CSV File
+The `1-export_to_CSV` module that fetches data
+from API and exports a particular user_id data
+to a CSV File
 """
 if __name__ == "__main__":
     import csv

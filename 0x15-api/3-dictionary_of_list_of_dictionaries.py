@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-The `2-export_to_JSON` that fetches data
-from API an exports to JSON File
+The `3-dictionary_of_list_of_dictionaries` module fetches data
+from an API and exports all user id's to a JSON File
 """
 if __name__ == "__main__":
     import json

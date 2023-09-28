@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """
-The `2-export_to_JSON` that fetches data
-from API an exports to JSON File
+The `2-export_to_JSON` module fetches data
+from API and exports a particular user_id data
+to JSON File
 """
 if __name__ == "__main__":
     import json

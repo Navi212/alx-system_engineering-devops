@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-The `0-gather_data_from_an_API` that fetches data
-from API
+The `0-gather_data_from_an_API` module fetches data
+from an API and prints the result in stdout
 """
 if __name__ == "__main__":
     import requests
