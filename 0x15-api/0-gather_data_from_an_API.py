@@ -24,4 +24,4 @@ if __name__ == "__main__":
     for i in range(0, len(todo)):
         if (todo[i]["userId"] == int(argv[1])):
             if (todo[i]["completed"]):
-                print(f"\t{todo[i]['title']}")
+                print(f"\t {todo[i]['title']}")
