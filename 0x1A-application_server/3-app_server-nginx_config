@@ -3,17 +3,23 @@
 server {
         listen  80;
         listen  [::]:80 default_server;
-	
-	# Adds customer header for X-Served-By
-	# web-01 id
+
+        # Adds customer header for X-Served-By
+        # web-01 id
         add_header X-Served-By 208571-web-01;
         root    /var/www/html;
         index   index.html index.htm;
 
-	# Adds location to proxy-request to WSGI gunicorn
-	# application server running on localhost port 5000
+        # Adds location to proxy-request to WSGI gunicorn
+        # application server running on localhost port 5000
         location = /airbnb-onepage/ {
                 proxy_pass http://127.0.0.1:5000/airbnb-onepage/;
+        }
+
+        # Adds location to proxy-request to HTTP server running
+        # on port 5001
+        location ~* /airbnb-dynamic/number_odd_or_even/(\d+)$ {
+                proxy_pass http://127.0.0.1:5001/number_odd_or_even/$1;
         }
 
         location /redirect_me {
@@ -26,4 +32,5 @@ server {
                 internal;
         }
 }
+
 
