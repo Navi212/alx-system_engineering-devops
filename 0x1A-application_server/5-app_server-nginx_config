@@ -40,7 +40,7 @@ server {
 
         # Adds a location to serve Airbnb web_static
         location static/ {
-                proxy_pass http://127.0.0.1:5003;
+                proxy_pass http://127.0.0.1:80;
         }
 
         location /redirect_me {
