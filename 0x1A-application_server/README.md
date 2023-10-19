@@ -1,29 +1,23 @@
-# configure Nginx to serve your page from the route /airbnb-onepage/
+#!/usr/bin/python3
+"""
+The `0-hello_route` module supply functions
+that starts a Flask web application, listens on 0.0.0.0
+port 5000 and returns a string when queried at '/'
+"""
+from flask import Flask
 
-server {
-        listen  80;
-        listen  [::]:80 default_server;
 
-        # Adds customer header for X-Served-By
-        # web-01 id
-        add_header X-Served-By 208571-web-01;
-        root    /var/www/html;
-        index   index.html index.htm;
+app = Flask(__name__)
 
-        # Adds location to proxy-request to WSGI gunicorn
-        # application server running on localhost port 5000
-        location = /airbnb-onepage/ {
-                proxy_pass http://127.0.0.1:5000/airbnb-onepage/;
-        }
 
-        location /redirect_me {
-                return 301 http://www.google.com;
-        }
+@app.route("/airbnb-onepage/", strict_slashes=False)
+def hello_hbnb():
+    """
+    Returns 'Hello HBNB!' when queried at '/'
+    """
+    return "Hello HBNB!"
 
-        error_page 404 /404.html;
-        location /404.html {
-                root /var/www/html;
-                internal;
-        }
-}
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
 
