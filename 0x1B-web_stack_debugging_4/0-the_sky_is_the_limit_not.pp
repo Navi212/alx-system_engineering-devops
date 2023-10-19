@@ -9,4 +9,5 @@ exec { 'fix--for-nginx':
 # Restart Nginx
 exec { 'nginx-restart':
   command => 'sudo systemctl reload nginx',
+  path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
 }
