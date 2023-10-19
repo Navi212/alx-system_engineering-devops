@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 # Reloads Gunicorn Gracefully
 
-# ps aux | grep gunicorn | awk '{print $2}' | xargs kill -HUP
-sudo initctl reload gunicorn
+sudo systemctl reload gunicorn
