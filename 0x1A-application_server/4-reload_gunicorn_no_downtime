@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Reloads Gunicorn Gracefully
 
-sudo systemctl reload gunicorn
+sudo initctl reload gunicorn
