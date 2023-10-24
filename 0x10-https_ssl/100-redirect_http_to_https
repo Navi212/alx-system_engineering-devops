@@ -34,15 +34,15 @@ defaults
         errorfile 504 /etc/haproxy/errors/504.http
 
 
+frontend web-frontend-https
+        bind *:443 ssl crt /etc/haproxy/certs/codershub.tech.pem
+        http-request set-header X-Forwarded-Proto https
+        default_backend web-backend
+
 frontend web-frontend-http
         bind *:80
         http-request set-header X-Forwarded-Proto http
 	http-request redirect scheme https code 301 unless { ssl_fc }
-        default_backend web-backend
-
-frontend web-frontend-https
-        bind *:443 ssl crt /etc/haproxy/certs/codershub.tech.pem
-        http-request set-header X-Forwarded-Proto https
         default_backend web-backend
 
 backend web-backend
